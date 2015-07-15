@@ -1,0 +1,23 @@
+Transactions are a sequence of database operations which are executed as a single unit:
+   * Either all of them execute successfully.
+   * Or none of them is executed at all.
+    
+A database transaction, by definition, must be atomic, consistent, isolated and durable. Database practitioners often refer
+to these properties of database transactions using the acronym ACID.
+
+Transactions provide an "all-or-nothing" proposition, stating that each work-unit performed in a database must either complete
+in its entirety or have no effect whatsoever. Further, the system must isolate each transaction from other transactions, results 
+must conform to existing constraints in the database, and transactions that complete successfully must get written to durable storage.
+
+Transactions guarantee the consistency and the integrity of the database
+    * All changes in a transaction are temporary
+    * Changes become final when COMMIT is successfully executed
+    * At any time all changes done in the transaction can be canceled by executing ROLLBACK
+
+* Transaction log
+Every SQL Server database has a transaction log that records all transactions and the database modifications made by each transaction.
+The transaction log must be truncated on a regular basis to keep it from filling up. However, some factors can delay log truncation, 
+so monitoring log size is important. Some operations can be minimally logged to reduce their impact on transaction log size. 
+The transaction log is a critical component of the database and, if there is a system failure, the transaction log might be required to 
+bring your database back to a consistent state. The transaction log should never be deleted or moved unless you fully understand the 
+ramifications of doing this.

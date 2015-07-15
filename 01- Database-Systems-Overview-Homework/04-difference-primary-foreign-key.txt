@@ -1,0 +1,7 @@
+Primary key is a set of one or more fields/columns of a table that uniquely identify a record in database table. 
+It can not accept null, duplicate values.
+
+Foreign Key is a field in database table that is Primary key in another table. It can accept multiple null, duplicate values.
+
+Primary key is clustered index and data in the database table is physically organized in the sequence of clustered index.
+Foreign key do not automatically create an index, clustered or non-clustered. You can manually create an index on foreign key.

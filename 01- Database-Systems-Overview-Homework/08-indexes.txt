@@ -1,0 +1,74 @@
+A database index is a data structure that improves the speed of data retrieval operations on a database table 
+at the cost of additional writes and storage space to maintain the index data structure. Indexes are used to 
+quickly locate data without having to search every row in a database table every time a database table is accessed.
+Indexes can be created using one or more columns of a database table, providing the basis for both rapid random 
+lookups and efficient access of ordered records.
+
+* Non-clustered index
+
+The data is present in arbitrary order, but the logical ordering is specified by the index. The data rows may be spread 
+throughout the table regardless of the value of the indexed column or expression. The non-clustered index tree contains 
+the index keys in sorted order, with the leaf level of the index containing the pointer to the record.
+In a non-clustered index:
+-The physical order of the rows is not the same as the index order.
+-The indexed columns are typically non-primary key columns used in JOIN, WHERE, and ORDER BY clauses.
+There can be more than one non-clustered index on a database table.
+
+* Clustered
+
+Clustering alters the data block into a certain distinct order to match the index, resulting in the row data being stored 
+in order. Therefore, only one clustered index can be created on a given database table. Clustered indices can greatly increase
+overall speed of retrieval, but usually only where the data is accessed sequentially in the same or reverse order of the clustered
+index, or when a range of items is selected.
+Since the physical records are in this sort order on disk, the next row item in the sequence is immediately before or after the
+last one, and so fewer data block reads are required. The primary feature of a clustered index is therefore the ordering of the
+physical data rows in accordance with the index blocks that point to them. Some databases separate the data and index blocks into
+separate files, others put two completely different data blocks within the same physical file(s).
+
+* B-tree
+
+B-tree is a tree data structure that keeps data sorted and allows searches, sequential access, insertions, and deletions in
+logarithmic time. The B-tree is a generalization of a binary search tree in that a node can have more than two children.
+It is optimized for systems that read and write large blocks of data.
+In B-trees, internal (non-leaf) nodes can have a variable number of child nodes within some pre-defined range. When data 
+is inserted or removed from a node, its number of child nodes changes. In order to maintain the pre-defined range, internal 
+nodes may be joined or split. Because a range of child nodes is permitted, B-trees do not need re-balancing as frequently as
+other self-balancing search trees, but may waste some space, since nodes are not entirely full. The lower and upper bounds
+on the number of child nodes are typically fixed for a particular implementation.
+
+* Full-text search index
+
+In a full-text search, a search engine examines all of the words in every stored document as it tries to match search criteria
+for example (text specified by a user). Full-text-searching techniques became common in online bibliographic databases in the 1990s.
+Many websites and application programs (such as word processing software) provide full-text-search capabilities. Some web search 
+engines, such as AltaVista, employ full-text-search techniques, while others index only a portion of the web pages examined
+by their indexing systems.
+When the number of documents to search is potentially large, or the quantity of search queries to perform is substantial, the problem
+of full-text search is often divided into two tasks: indexing and searching. The indexing stage will scan the text of all the documents
+and build a list of search terms (often called an index, but more correctly named a concordance). 
+In the search stage, when performing a specific query, only the index is referenced, rather than the text of the original documents.
+The indexer will make an entry in the index for each term or word found in a document, and possibly note its relative position within
+the document. Usually the indexer will ignore stop words (such as "the" and "and") that are both common and insufficiently meaningful
+to be useful in searching.
+
+* Spatial index
+
+ A spatial index is a type of extended index that allows you to index a spatial column. A spatial column is a table column that contains
+ data of a spatial data type, such as geometry or geography.
+ In SQL Server, spatial indexes are built using B-trees, which means that the indexes must represent the 2-dimensional spatial data in the 
+ linear order of B-trees. Therefore, before reading data into a spatial index, SQL Server implements a hierarchical uniform decomposition
+ of space. The index-creation process decomposes the space into a four-level grid hierarchy. These levels are referred to as
+ level 1 (the top level), level 2, level 3, and level 4. Each successive level further decomposes the level above it, so each upper-level
+ cell contains a complete grid at the next level. On a given level, all the grids have the same number of cells along both 
+ axes (for example, 4x4 or 8x8), and the cells are all one size.
+ 
+ *** The pros and cons of using database index
+ 
+ * Advantages: 
+use an index for quick access to a database table specific information. The index take up disk space and reduce to add, delete, 
+and update the line speed. In most cases, the speed advantages of indexes for data retrieval greatly exceeds it. 
+
+* Disadvantages: 
+The downside is that indexing require more space and when performing operation different from search such as insert, update or delete 
+the performance is slowed because indexing requires two writing operations - one in the table data and one in the index data. So indexing
+should be used only on large scales of data for searching operations and not for insert, update or delete. 

@@ -1,0 +1,16 @@
+In databases a table is a collection of related data held in a structured format within a database. It consists of 
+fields (columns), and rows.
+
+In relational databases and flat file databases, a table is a set of data elements (values) using a model of vertical 
+columns (which are identified by their name) and horizontal rows, the cell being the unit where a row and column intersect.
+A table has a specified number of columns, but can have any number of rows. Each row is identified by one or more values 
+appearing in a particular column subset. The columns subset which uniquely identifies a row is called the primary key.
+
+There is the difference between a table and relation and it is that a table is usually a multiset (bag) of rows where a relation 
+is a set and does not allow duplicates. 
+
+In terms of the relational model of databases, a table can be considered a convenient representation of a relation, 
+but the two are not strictly equivalent. For instance, an SQL table can potentially contain duplicate rows, whereas a true relation cannot 
+contain duplicate tuples. Similarly, representation as a table implies a particular ordering to the rows and columns, 
+whereas a relation is explicitly unordered. However, the database system does not guarantee any ordering of the rows unless an ORDER BY
+clause is specified in the SELECT statement that queries the table.

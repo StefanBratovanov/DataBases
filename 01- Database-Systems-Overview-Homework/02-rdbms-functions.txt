@@ -1,0 +1,10 @@
+The main functions of the relational DBMS to manage the organization, storage, access, security and integrity 
+of data. This specialized software allows application systems to focus on the user interface, data validation
+and screen navigation. When there is a need to add, modify, delete or display data, the application system simply
+makes a "call" to the RDBMS.
+
+The most common use of RDBMSs is to implement simple CRUD – Create, Read, Update, and Delete – functionality. 
+For example an application could create a new order and insert it into your database. It could read an existing order, 
+work with the data, and then update the database with the new information. It could also choose to delete an existing order, 
+perhaps because the customer has cancelled it.  The vast majority of your interaction with an RDB will likely be to implement basic
+CRUD functionality.

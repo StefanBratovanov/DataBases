@@ -1,0 +1,32 @@
+Database normalization is the process of organizing the attributes and tables of a relational database to minimize data redundancy.
+
+Normalization involves decomposing a table into less redundant (and smaller) tables but without losing information; 
+defining foreign keys in the old table referencing the primary keys of the new ones. The objective is to isolate data 
+so that additions, deletions, and modifications of an attribute can be made in just one table and then propagated through 
+the rest of the database using the defined foreign keys.
+
+Data normalization is a process in which data attributes within a data model are organized to increase the cohesion of entity types. 
+In other words, the goal of data normalization is to reduce and even eliminate data redundancy, an important consideration for 
+application developers because it is incredibly difficult to store objects in a relational database that maintains the same information 
+in several places.  Table 1 summarizes the three most common forms of normalization ( First normal form (1NF), Second normal form (2NF),
+and Third normal form (3NF)) describing how to put entity types into a series of increasing levels of normalization. 
+
+Level                          Rule
+
+First normal form (1NF)	    An entity type is in 1NF when it contains no repeating groups of data.
+Second normal form (2NF)	An entity type is in 2NF when it is in 1NF and when all of its non-key attributes are fully dependent on its primary key. 
+Third normal form (3NF)	    An entity type is in 3NF when it is in 2NF and when all of its attributes are directly dependent on the primary key.
+
+
+The benefits of normalization include:
+
+* Searching, sorting, and creating indexes is faster, since tables are narrower, and more rows fit on a data page.
+* You usually have more tables.
+* You can have more clustered indexes (one per table), so you get more flexibility in tuning queries.
+* Index searching is often faster, since indexes tend to be narrower and shorter.
+* More tables allow better use of segments to control physical placement of data.
+* You usually have fewer indexes per table, so data modification commands are faster.
+* Fewer null values and less redundant data, making your database more compact.
+* Triggers execute more quickly if you are not maintaining redundant data.
+* Data modification anomalies are reduced.
+* Normalization is conceptually cleaner and easier to maintain and change as your needs change.
